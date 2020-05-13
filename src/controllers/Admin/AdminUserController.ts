@@ -15,7 +15,7 @@ export default class AdminUserController {
         const id = req.params.id;
 
         //Get values from the body
-        const { provider, providerId, email, role, firstName, lastName } = req.body;
+        const { displayName, email, role, firstName, lastName } = req.body;
 
         //Try to find user on database
         const userRepository = getRepository(User);
@@ -29,9 +29,8 @@ export default class AdminUserController {
         }
 
         //Validate the new values on model
-        user.provider = provider;
-        user.providerId = providerId;
         user.email = email;
+        user.displayname = displayName;
         user.role = role;
         user.firstName = firstName;
         user.lastName = lastName;
@@ -57,7 +56,7 @@ export default class AdminUserController {
         //Get users from database
         const userRepository = getRepository(User);
         const users = await userRepository.find({
-            select: ["id", "email", "role", "firstName", "lastName", "provider"] //We dont want to send the passwords on response
+            select: ["id", "provider", "providerId", "email", "displayName", "role", "firstName", "lastName",] //We dont want to send the passwords on response
         });
 
         //Send the users object

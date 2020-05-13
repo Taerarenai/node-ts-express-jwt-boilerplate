@@ -1,7 +1,11 @@
 {
    "name": "node-ts-express-jwt",
    "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
+   "description": "BoilerPlate Rest API using : NodeJS (Express), TypeORM, Passport-JWT,MySQL.",
+   "author": {
+      "name": "Petre Nencu (Taerarenai)",
+      "url": "https://www.codetek.eu"
+   },
    "devDependencies": {
       "ts-node": "3.3.0",
       "@types/node": "^8.0.29",
@@ -15,6 +19,7 @@
       "@types/jsonwebtoken": "^8.3.9",
       "@types/jwt-decode": "^2.2.1",
       "@types/passport-jwt": "^3.0.3",
+      "@types/socket.io": "^2.1.4",
       "bcryptjs": "^2.4.3",
       "body-parser": "^1.18.1",
       "class-validator": "^0.12.2",
@@ -27,6 +32,7 @@
       "passport": "^0.4.1",
       "passport-jwt": "^4.0.0",
       "reflect-metadata": "^0.1.10",
+      "socket.io": "^2.3.0",
       "ts-node-dev": "^1.0.0-pre.44",
       "tslib": "^1.11.2",
       "typeorm": "0.2.24"

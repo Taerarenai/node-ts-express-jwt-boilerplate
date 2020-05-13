@@ -14,7 +14,10 @@ class UserController {
 
     static signJWT = async (user) => {
         const token = jwt.sign(
-            { userId: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName, role: user.role, provider: user.provider, providerId: user.providerId },
+            {
+                userId: user.id, provider: user.provider, providerId: user.providerId, email: user.email,
+                displayName: user.displayName, role: user.role, firstName: user.firstName, lastName: user.lastName,
+            },
             config.jwtSecret,
             { expiresIn: config.expiration, issuer: config.issuer, audience: config.audience }
         );
@@ -96,12 +99,13 @@ class UserController {
     //Create & Update
     static newUser = async (req: Request, res: Response) => {
         //Get parameters from the body
-        let { email, password, firstName, lastName } = req.body;
+        let { email, password, firstName, lastName, displayName } = req.body;
         let user = new User();
 
         user.provider = "CODETEK";
         user.providerId = "1";
         user.email = email;
+        user.displayName = displayName;
         user.password = password;
         user.role = "USER";
         user.firstName = firstName;
@@ -139,7 +143,7 @@ class UserController {
 
         const id: number = token.userId
         //Get values from the body
-        const { provider, providerId, email, role, firstName, lastName } = req.body;
+        const { displayName, email, role, firstName, lastName } = req.body;
 
         //Try to find user on database
         const userRepository = getRepository(User);
@@ -153,9 +157,8 @@ class UserController {
         }
 
         //Validate the new values on model
-        user.provider = provider;
-        user.providerId = providerId;
         user.email = email;
+        user.displayname = displayName;
         user.role = role;
         user.firstName = firstName;
         user.lastName = lastName;
@@ -165,7 +168,7 @@ class UserController {
             return;
         }
 
-        //Try to safe, if fails, that means email already in use
+        //Try to save, if fails, that means email already in use
         try {
             await userRepository.save(user);
         } catch (e) {
@@ -206,7 +209,7 @@ class UserController {
         const userRepository = getRepository(User);
         try {
             const user = await userRepository.findOneOrFail(id, {
-                select: ["id", "email", "role", "firstName", "lastName", "provider"] //We dont want to send the passwords on response
+                select: ["id", "provider", "providerId", "email", "displayName", "role", "firstName", "lastName",] //We dont want to send the passwords on response
             });
 
             res.status(200).send(user);
@@ -223,7 +226,7 @@ class UserController {
         const userRepository = getRepository(User);
         try {
             const user = await userRepository.findOneOrFail(id, {
-                select: ["id", "email", "role", "firstName", "lastName", "provider"] //We dont want to send the passwords on response
+                select: ["id", "provider", "providerId", "email", "displayName", "role", "firstName", "lastName",] //We dont want to send the passwords on response
             });
             res.status(200).send(user);
         } catch (error) {

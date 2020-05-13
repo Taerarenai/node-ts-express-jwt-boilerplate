@@ -7,7 +7,8 @@ export class CreateAdminUser1547919837483 implements MigrationInterface {
     user.provider = "CODETEK";
     user.providerId = "1";
     user.email = "admin@codetek.eu";
-    user.password = "admin";
+    user.displayName = "Admin",
+      user.password = "admin";
     user.role = "ADMIN";
     user.firstName = "Admin";
     user.lastName = "Admin";

@@ -1,4 +1,4 @@
-# NodeJS TypeScript + Express + JWT Boilerplate
+# NodeJS TypeScript + Express + Passport JWT Boilerplate
 
 "tsc" — create a /build folder and converts all your .ts to .jsfiles.  
 "ts-node" — allows node to run .ts projects. Not recommended for production uses.  

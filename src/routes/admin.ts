@@ -16,11 +16,11 @@ export class AdminRoutes {
         //USERS EndPoints
         //
         //Edit One user
-        this.router.patch("/users/:id([0-9]+)", this.authController.authenticateJWTAdmin, AdminUserController.editUser);
+        this.router.patch("/users/:id([0-9]+)", this.authController.authorizeJWTAdmin, AdminUserController.editUser);
         //Get all users
-        this.router.get("/users/", this.authController.authenticateJWTAdmin, AdminUserController.getAllUsers);
-
-        this.router.delete("/:id([0-9]+)", this.authController.authenticateJWTAdmin, AdminUserController.deleteUser);
+        this.router.get("/users/", this.authController.authorizeJWTAdmin, AdminUserController.getAllUsers);
+        //Delete One user
+        this.router.delete("/:id([0-9]+)", this.authController.authorizeJWTAdmin, AdminUserController.deleteUser);
     }
 }
 

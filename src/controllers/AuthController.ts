@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import * as passport from "passport";
 import "../middlewares/passport";
-
+import roles from '../utils/roles';
 
 export default class AuthController {
 
@@ -21,7 +21,7 @@ export default class AuthController {
         })(req, res, next);
     }
 
-    public authenticateJWTAdmin(req: Request, res: Response, next: NextFunction) {
+    public authorizeJWTAdmin(req: Request, res: Response, next: NextFunction) {
         passport.authenticate("jwt", function (err, user, info) {
             if (err) {
                 console.log(err);
@@ -32,7 +32,7 @@ export default class AuthController {
 
                 return res.status(401).json({ status: "error", code: "unauthorized" });
             }
-            if (user.role !== "ADMIN") {
+            if (user.role !== roles.Admin) {
                 return res.status(401).json({ status: "error", code: "unauthorized" });
             } else {
                 return next();
