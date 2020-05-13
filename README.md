@@ -1,7 +1,5 @@
-# Awesome Project Build with TypeORM
+# NodeJS TypeScript + Express + JWT Boilerplate
 
-Steps to run this project:
-
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+"tsc" — create a /build folder and converts all your .ts to .jsfiles.  
+"ts-node" — allows node to run .ts projects. Not recommended for production uses.  
+"ts-node-dev" — same as above, but allows you restart the node server every time you change a file.  

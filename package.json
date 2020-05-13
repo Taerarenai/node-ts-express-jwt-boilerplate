@@ -23,9 +23,13 @@
       "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.10",
       "ts-node-dev": "^1.0.0-pre.44",
+      "tslib": "^1.11.2",
       "typeorm": "0.2.24"
    },
    "scripts": {
-      "start": "ts-node src/index.ts"
+      "tsc": "tsc",
+      "start": "set debug=* && ts-node-dev --respawn --transpileOnly ./src/index.ts",
+      "prod": "tsc && node ./build/app.js",
+      "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
    }
 }
