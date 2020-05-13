@@ -1,35 +1,46 @@
 import { Router } from "express";
 import UserController from "../controllers/UserController";
-import { checkJwt } from "../middlewares/checkJwt";
+//import { checkJwt } from "../middlewares/passport";
 import { checkRole } from "../middlewares/checkRole";
+import AuthController from "../controllers/AuthController";
 
-const router = Router();
+export class UserRoutes {
+  public router: Router;
+  public authController: AuthController = new AuthController();
 
-//Get all users
-router.get("/", [checkJwt, checkRole(["ADMIN"])], UserController.listAll);
+  constructor() {
+    this.router = Router();
+    this.routes();
+  }
 
-// Get one user
-router.get(
-  "/:id([0-9]+)",
-  [checkJwt, checkRole(["ADMIN"])],
-  UserController.getOneById
-);
 
-//Create a new user
-router.post("/", [checkJwt, checkRole(["ADMIN"])], UserController.newUser);
+  routes() {
 
-//Edit one user
-router.patch(
-  "/:id([0-9]+)",
-  [checkJwt, checkRole(["ADMIN"])],
-  UserController.editUser
-);
+    // Get own suer
 
-//Delete one user
-router.delete(
-  "/:id([0-9]+)",
-  [checkJwt, checkRole(["ADMIN"])],
-  UserController.deleteUser
-);
+    this.router.get("/me", this.authController.authenticateJWT, UserController.getOwnUser);
 
-export default router;
+    // Get one user
+    this.router.get("/:id([0-9]+)", this.authController.authenticateJWT, UserController.getOneById);
+
+    //Register
+    this.router.post("/create", UserController.newUser);
+
+    //Delete one user
+    this.router.delete("/:id([0-9]+)", [checkRole(["ADMIN"])], UserController.deleteUser
+    );
+
+    //auth
+    //Login route
+    this.router.post("/login", UserController.login);
+
+    //Change my password
+    this.router.post("/change-password", this.authController.authenticateJWT, UserController.changePassword);
+  }
+}
+
+
+
+
+
+
