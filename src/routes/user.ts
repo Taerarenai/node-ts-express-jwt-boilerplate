@@ -22,7 +22,7 @@ export class UserRoutes {
     this.router.get("/:id([0-9]+)", this.authController.authenticateJWT, UserController.getOneById);
 
     //Delete own user
-    this.router.delete("/:id([0-9]+)", this.authController.authenticateJWT, UserController.deleteUser);
+    this.router.delete("/me", this.authController.authenticateJWT, UserController.deleteUser);
 
     //Change my password
     this.router.post("/change-password", this.authController.authenticateJWT, UserController.changePassword);

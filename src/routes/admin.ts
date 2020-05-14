@@ -20,7 +20,7 @@ export class AdminRoutes {
         //Get all users
         this.router.get("/users/", this.authController.authorizeJWTAdmin, AdminUserController.getAllUsers);
         //Delete One user
-        this.router.delete("/:id([0-9]+)", this.authController.authorizeJWTAdmin, AdminUserController.deleteUser);
+        this.router.delete("/users/:id([0-9]+)", this.authController.authorizeJWTAdmin, AdminUserController.deleteUser);
     }
 }
 
