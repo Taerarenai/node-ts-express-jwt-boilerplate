@@ -154,6 +154,7 @@ module.exports = {
             }
         ],
         "use-isnan": "error",
-        "valid-typeof": "off"
+        "valid-typeof": "off",
+        "prefer-destructuring": ["error", {"object": true, "array": false}]
     }
 };

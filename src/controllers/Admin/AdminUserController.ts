@@ -7,7 +7,7 @@ export default class AdminUserController {
   // USERS
   static editUser = async (req: Request, res: Response): Promise<Response> => {
     // Get the ID from the url
-    const id = req.params.id;
+    const { id } = req.params;
 
     // Get values from the body
     const { displayName, email, role, firstName, lastName } = req.body;
@@ -60,7 +60,7 @@ export default class AdminUserController {
 
   static deleteUser = async (req: Request, res: Response): Promise<Response> => {
     // Get the ID from the url
-    const id = req.params.id;
+    const { id } = req.params;
 
     const userRepository = getRepository(User);
     try {
