@@ -1,5 +1,5 @@
 export default {
-    Admin: "ADMIN",
-    Moderator: "MODERATOR",
-    USER: "USER"
-}
+  Admin: "ADMIN",
+  Moderator: "MODERATOR",
+  USER: "USER",
+};

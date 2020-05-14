@@ -1,11 +1,4 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  Unique,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, Unique, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { Length, IsNotEmpty, IsEmail } from "class-validator";
 import * as bcrypt from "bcryptjs";
 
@@ -55,14 +48,12 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  hashPassword = async () => {
+  // eslint-disable-next-line @typescript-eslint/require-await
+  hashPassword = async (): Promise<void> => {
     this.password = bcrypt.hashSync(this.password, 10);
-  }
+  };
 
-  checkIfUnencryptedPasswordIsValid(unencryptedPassword: string) {
-    console.log("checking sync");
-    console.log(unencryptedPassword.toString());
-    console.log("Done check sync");
+  checkIfUnencryptedPasswordIsValid(unencryptedPassword: string): boolean {
     return bcrypt.compareSync(unencryptedPassword, this.password);
   }
 }

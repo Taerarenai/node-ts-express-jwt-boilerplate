@@ -7,8 +7,17 @@
       "url": "https://www.codetek.eu"
    },
    "devDependencies": {
-      "ts-node": "3.3.0",
       "@types/node": "^8.0.29",
+      "@typescript-eslint/eslint-plugin": "^2.33.0",
+      "@typescript-eslint/parser": "^2.33.0",
+      "eslint": "^7.0.0",
+      "eslint-config-prettier": "^6.11.0",
+      "eslint-config-typescript": "^3.0.0",
+      "eslint-plugin-jsdoc": "^25.4.1",
+      "eslint-plugin-prefer-arrow": "^1.2.1",
+      "eslint-plugin-prettier": "^3.1.3",
+      "prettier": "^2.0.5",
+      "ts-node": "3.3.0",
       "typescript": "3.3.3333"
    },
    "dependencies": {
@@ -16,9 +25,10 @@
       "@types/body-parser": "^1.19.0",
       "@types/cors": "^2.8.6",
       "@types/helmet": "0.0.47",
-      "@types/jsonwebtoken": "^8.3.9",
+      "@types/jsonwebtoken": "^8.5.0",
       "@types/jwt-decode": "^2.2.1",
       "@types/passport-jwt": "^3.0.3",
+      "@types/prettier": "^2.0.0",
       "@types/socket.io": "^2.1.4",
       "bcryptjs": "^2.4.3",
       "body-parser": "^1.18.1",
@@ -35,12 +45,14 @@
       "socket.io": "^2.3.0",
       "ts-node-dev": "^1.0.0-pre.44",
       "tslib": "^1.11.2",
+      "tslint": "^6.1.2",
       "typeorm": "0.2.24"
    },
    "scripts": {
       "tsc": "tsc",
       "start": "set debug=* && ts-node-dev --respawn --transpileOnly ./src/index.ts",
       "prod": "tsc && node ./build/app.js",
-      "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
+      "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
+      "lint": "eslint -c .eslintrc.js --ext .ts <mySrcFolder>"
    }
 }
