@@ -145,7 +145,7 @@ class UserController {
 
     const id: number = token.userId;
     // Get values from the body
-    const { displayName, email, role, firstName, lastName } = req.body;
+    const { displayName, email, firstName, lastName } = req.body;
 
     // Try to find user on database
     const userRepository = getRepository(User);
@@ -160,8 +160,7 @@ class UserController {
 
     // Validate the new values on model
     user.email = email;
-    user.displayname = displayName;
-    user.role = role;
+    user.displayName = displayName;
     user.firstName = firstName;
     user.lastName = lastName;
     const errors = await validate(user);
@@ -177,8 +176,10 @@ class UserController {
       res.status(409).send("email already in use");
       return;
     }
+
+    delete user.password;
     // After all send a 204 (no content, but accepted) response
-    return res.status(204).send();
+    return res.status(200).send(user);
   };
 
   static deleteUser = async (req: Request, res: Response): Promise<Response> => {

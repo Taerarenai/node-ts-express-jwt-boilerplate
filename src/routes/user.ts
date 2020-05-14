@@ -16,12 +16,13 @@ export class UserRoutes {
   routes() {
     // Get own user
     this.router.get("/me", this.authController.authenticateJWT, UserController.getOwnUser);
+    // Delete own user
+    this.router.delete("/me", this.authController.authenticateJWT, UserController.deleteUser);
+    // Edit own user
+    this.router.patch("/me", this.authController.authenticateJWT, UserController.editOwnUser);
 
     // Get one user
     this.router.get("/:id([0-9]+)", this.authController.authenticateJWT, UserController.getOneById);
-
-    // Delete own user
-    this.router.delete("/me", this.authController.authenticateJWT, UserController.deleteUser);
 
     // Change my password
     this.router.post("/change-password", this.authController.authenticateJWT, UserController.changePassword);
