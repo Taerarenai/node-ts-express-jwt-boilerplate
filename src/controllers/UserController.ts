@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/require-await */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { validate } from "class-validator";
@@ -11,7 +9,8 @@ import * as jwtDecode from "jwt-decode";
 class UserController {
   // Authentication
 
-  static signJWT = async user => {
+  // eslint-disable-next-line @typescript-eslint/require-await
+  static signJWT = async (user: { id: any; provider: any; providerId: any; email: any; displayName: any; role: any; firstName: any; lastName: any }): Promise<string> => {
     const token = jwt.sign(
       {
         userId: user.id,
