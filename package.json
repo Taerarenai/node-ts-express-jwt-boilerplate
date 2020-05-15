@@ -1,7 +1,7 @@
 {
-   "name": "node-ts-express-jwt",
+   "name": "node-ts-express-jwt-boilerplate",
    "version": "0.0.1",
-   "description": "BoilerPlate Rest API using : NodeJS (Express), TypeORM, Passport-JWT,MySQL.",
+   "description": "BoilerPlate Rest API using : NodeJS (Express), TypeORM, Passport-JWT, MySQL.",
    "author": {
       "name": "Petre Nencu (Taerarenai)",
       "url": "https://www.codetek.eu"
