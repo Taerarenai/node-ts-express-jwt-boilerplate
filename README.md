@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./codetekLogo.jpg" alt="CodeTek" width="400" />
-</p>
-
 <h1 align="center">Express Typescript Boilerplate</h1>
 
 ### Features
