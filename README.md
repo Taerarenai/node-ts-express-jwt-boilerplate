@@ -37,7 +37,7 @@ I suggest installing `typeorm` globally.
 
 | Name                     | Description                                |
 | ------------------------ | ------------------------------------------ |
-| **public/**              | Compiled source files will be placed here  |
+| **build/**               | Compiled source files will be placed here  |
 | **src/**                 | Source files                               |
 | **src/config/**          | Configuration file (JWT Secret, Issuer)    |        |
 | **src/controllers/**     | REST API Controllers                       |
