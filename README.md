@@ -39,7 +39,7 @@ I suggest installing `typeorm` globally.
 | ------------------------ | ------------------------------------------ |
 | **public/**              | Compiled source files will be placed here  |
 | **src/**                 | Source files                               |
-| **src/config/**          | Configuration file (JWT Secret)            |
+| **src/config/**          | Configuration file (JWT Secret, Issuer)    |        |
 | **src/controllers/**     | REST API Controllers                       |
 | **src/entity/**          | TypeORM entities like User                 |
 | **src/api/middlewares/** | Express Middlewares like Passport JWT      |
