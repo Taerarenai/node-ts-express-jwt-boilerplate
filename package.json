@@ -43,7 +43,7 @@
       "passport-jwt": "^4.0.1",
       "reflect-metadata": "^0.1.10",
       "socket.io": "^2.5.0",
-      "ts-node-dev": "^1.0.0-pre.44",
+      "ts-node-dev": "^1.1.8",
       "tslib": "^1.11.2",
       "tslint": "^6.1.2",
       "typeorm": "0.3.20"
