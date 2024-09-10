@@ -40,7 +40,7 @@
       "jwt-decode": "^2.2.0",
       "mysql": "^2.14.1",
       "passport": "^0.4.1",
-      "passport-jwt": "^4.0.0",
+      "passport-jwt": "^4.0.1",
       "reflect-metadata": "^0.1.10",
       "socket.io": "^2.5.0",
       "ts-node-dev": "^1.0.0-pre.44",
